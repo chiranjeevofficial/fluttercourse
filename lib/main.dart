@@ -22,9 +22,11 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),*/
       // home: MyHome(),
+      initialRoute: "/home",
       routes: {
-        // "/" : (context) => const MyHome(),
-        "/": (context) => const MyLogin(),
+        "/": (context) => const MyHome(),
+        "/home": (context) => const MyHome(),
+        "/login": (context) => const MyLogin(),
       },
     );
   }
