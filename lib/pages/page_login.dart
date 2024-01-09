@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyHome extends StatelessWidget {
-  const MyHome({super.key});
+class MyLogin extends StatelessWidget {
+  const MyLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +12,10 @@ class MyHome extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          "Home Page",
+          "Login Page",
           style: TextStyle(
             fontSize: 30,
-          )
+          ),
         ),
       ),
       drawer: const Drawer(),
