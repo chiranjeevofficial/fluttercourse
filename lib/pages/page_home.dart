@@ -7,7 +7,13 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cloud Cart"),
+        title: const Text(
+          "Cloud Cart",
+          style: TextStyle(
+            color: Colors.white
+          )
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.blue,
       ),
       body: const Center(
@@ -18,7 +24,9 @@ class MyHome extends StatelessWidget {
           )
         ),
       ),
-      drawer: const Drawer(),
+      drawer: const Drawer(
+        surfaceTintColor: Colors.white,
+      ),
     );
   }
 }
