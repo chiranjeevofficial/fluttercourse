@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercourse/utils/routes.dart';
 
-class MyLogin extends StatelessWidget {
+class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
+
+  @override
+  State<MyLogin> createState() => _MyLoginState();
+}
+
+class _MyLoginState extends State<MyLogin> {
+  String addOn = "";
+  bool changeButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +25,9 @@ class MyLogin extends StatelessWidget {
               height: 20,
               child: Text("Cloud cart"),
             ),
-            const Text("Welcome",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text("Welcome $addOn",
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
               child: Column(
@@ -28,6 +37,10 @@ class MyLogin extends StatelessWidget {
                       labelText: "Username",
                       hintText: "Enter username",
                     ),
+                    onChanged: (value) {
+                      addOn = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
@@ -39,7 +52,42 @@ class MyLogin extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changeButton = true;
+                      });
+                      await Future.delayed(const Duration(seconds: 1));
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(seconds: 1),
+                      width: changeButton ? 50 : 150,
+                      height: 50,
+                      // color: Colors.purple,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.purple,
+                        // shape: changeButton ? BoxShape.circle : BoxShape.rectangle,
+                        borderRadius:
+                            BorderRadius.circular(changeButton ? 25 : 8),
+                      ),
+                      child: changeButton
+                          ? const Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              "Login",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                    ),
+                  ),
+                  /*ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, MyRoutes.homeRoute);
                     },
@@ -47,7 +95,7 @@ class MyLogin extends StatelessWidget {
                       minimumSize: const Size(90, 40),
                     ),
                     child: const Text("Login"),
-                  )
+                  )*/
                 ],
               ),
             ),
